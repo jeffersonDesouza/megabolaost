@@ -1,0 +1,25 @@
+/* CSS declarations go here */
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+.quadro-jogos{
+	margin: 1px;
+
+	border: solid #686868 2px;
+	border-radius: 10px;
+}
+
+.bola{
+	margin: 10px;
+	font-size: 25pt;
+
+}
+
+a:hover{
+	text-decoration: none;
+}
