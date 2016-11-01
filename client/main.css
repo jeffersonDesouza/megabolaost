@@ -17,9 +17,27 @@
 .bola{
 	margin: 10px;
 	font-size: 25pt;
-
 }
 
-a:hover{
-	text-decoration: none;
+
+
+
+
+/* visited link */
+a:visited {
+    text-decoration: none;
+	color:#fff;
 }
+
+/* mouse over link */
+a:hover {
+    text-decoration: none;
+	color:#fff;
+}
+
+/* selected link */
+a:active {
+    text-decoration: none;
+	color:#fff;
+}
+
