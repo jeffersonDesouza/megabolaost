@@ -21,7 +21,7 @@ Router.route('/adicionar-jogador',function(){
 		to: 'navbar'
 	});
 
-	this.render('adicionar_usuario',{
+	this.render('adicionar_jogador',{
 		to: 'main'
 	});
 });
