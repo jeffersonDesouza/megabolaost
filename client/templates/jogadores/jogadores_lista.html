@@ -1,0 +1,27 @@
+<template name="jogadores_lista">
+
+			<h4>TODOS OS JOGADORES</h4>
+    <div class="container">
+
+            <ul >
+            {{#each jogadores}}
+                <div class="row" style="background-color:{{pagoCor isPago}}">
+                    <li class="collection-item" style="padding-rght:10px">
+                        <span class="title">Nome: {{nome}}</span>
+                            <br>
+                        <span>Pago: {{estaPago isPago}}</span>
+                            <br>
+                        Numeros: {{jogoArray}}
+                            <br>
+                        Número de acertos: 1
+                            <br>
+                        <div class="center">
+                            <a href="/jogadores/{{_id}}" class="waves-effect waves-light btn blue darken-2">Detalhes -ou- Editar</a>
+                        </div>
+                    </li>
+                </div>
+            {{/each}}
+			</ul>
+    </div>
+
+</template>

@@ -3,38 +3,13 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+Jogadores = new Mongo.Collection("jogadores");
+
+Sorteios = new Mongo.Collection("sorteios");
+
+Postagens = new Mongo.Collection("postagens");
 
 
-Template.adicionar_jogador.helpers({
-	numeros_bolas(){
-		bolas_num = [];
-
-		for(let i=1; i<7; i++){
-			bolas_num[i] = {
-				id: "num_"+i,
-				posicao: i,
-
-			}
-		}
-
-		return bolas_num;
-	},
-	valor_escolhido(num_id){
-
-	}
-});
-
-
-Template.adicionar_jogador.events({
-	'change .numero_escolhido': function(event){
-
-
-		let label_id = 'label_'+$(event.target).attr('id')
-		let valor = $(event.target).val()
-		$('#'+label_id).text(valor);
-
-	}
-});
 
 
 

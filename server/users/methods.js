@@ -23,9 +23,20 @@ export function nomeDoUsuario(){
     return "";
 }
 
+export function isAdm(userId){
+    if(this.userId){
+        let user = Meteor.users.find({_id:userId},{profile:1,_id:0});
+        
+        return user;
+    }
+    return false;
+}
+
 
 
 
 Meteor.methods({
   salvarJogador,
+  isAdm
+
 });

@@ -1,4 +1,8 @@
 
+Template.navbar.onCreated(
+    function helloOnCreated() {
+        $('.button-collapse').sideNav();
+});
 
 
 Template.navbar.helpers({
@@ -13,7 +17,16 @@ Template.navbar.helpers({
           return false;
         }
         return true;
-	}
+	},
+    isAdm(){
+
+        return true;
+    },
+    getUsername:function(){
+
+
+        return "";
+    }
 });
 
 
@@ -34,9 +47,15 @@ Template.navbar.events({
 
         Meteor.loginWithPassword(username, password);
 
+        if(Meteor.userId()){
+            $('#modal1').closeModal();
+        }
+
 		return false;
 	},
-    'click #js-sair_button':function(){
-        Meteor.logout();
+    'click .js-sair_button':function(){
+        if(Meteor.userId()){
+            Meteor.logout();
+        }
     }
 });

@@ -1,20 +1,33 @@
 import { Meteor } from 'meteor/meteor';
 
+Jogadores = new Mongo.Collection("jogadores");
+
+Sorteios = new Mongo.Collection("sorteios");
+
+Postagens = new Mongo.Collection("postagens");
+
+
+
 Meteor.startup(() => {
 
     if(!Meteor.users.findOne()){
 
-        var admUser = {
+        var user = {
             username: "988157090",
             password: "ira123ieza",
-            profile:{
-                name:"Neto de Evaldo",
-                adm:true
-
-            }
         };
 
-        Accounts.createUser(admUser);
+        Accounts.createUser(user);
+
+        var novoJogador = {
+            _id: Meteor.users.findOne({},{_id:1}),
+            name:"Neto de Evaldo",
+            isAdm:true
+        };
+
+
+        //Jogadores.insert(novoJogador);
+
     }
 
 });

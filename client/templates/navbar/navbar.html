@@ -6,32 +6,46 @@
 
 			<a href="/" class="brand-logo" style="padding-left: 15px">Mega Bolão ST</a>
 
+
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
 				<div class="right">
 
-					<ul id="nav-mobile" class="hide-on-med-and-down" style="display:inline;">
-							<li><a href="/" class="waves-effect waves-light">Página Inicial</a></li>
-							<li><a href="/adicionar-jogador" class="waves-effect waves-light">Adicionar Jogador</a></li>
-							<li><a href="/lista-jogadores" class="waves-effect waves-light">Lista de Jogadores</a></li>
-							<li><a href="/receber-pagamento" class="waves-effect waves-light">Receber Atrasado</a></li>
-					</ul>
+
 
 			 		<!-- Modal Trigger -->
                     {{#if isNotLoggedIn}}
- 					    <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
+ 					    <!--<button id="modal-trigger" data-target="modal1" class="btn">Login</button>-->
+                        {{> loginButtons align="right"}}
                     {{/if}}
                     {{#if isLoggedIn}}
- 					    <i>Neto</i>
+                        <ul>
+                		    <li>{{getUsername}}</li>
+                            <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
+                        </ul>
                     {{/if}}
 
+                    {{#if isLoggedIn}}
+                    <ul id="nav-mobile" class="hide-on-med-and-down" style="display:inline;">
+                        <li><a href="/" class="waves-effect waves-light">Página Inicial</a></li>
+                        <li><a href="/adicionar-jogador" class="waves-effect waves-light">Adicionar Jogador</a></li>
+                        <li><a href="/lista-jogadores" class="waves-effect waves-light">Lista de Jogadores</a></li>
+                        <li><a href="/receber-pagamento" class="waves-effect waves-light">Receber Atrasado</a></li>
+                    </ul>
+                    {{/if}}
+
+
+
 				</div>
+
+
 
 
 		</div>
 
 			<!-- Side bar menu escondido-->
 			<ul class="side-nav teal lighten-2" id="mobile-demo">
+                {{#if isLoggedIn}}
 				<li><a href="/" class="waves-effect waves-light">Página Inicial</a></li>
 					<li class="divider"></li>
 
@@ -43,9 +57,9 @@
 				<li><a href="/lista-jogadores" class="waves-effect waves-light">Lista de Jogadores</a></li>
 					<li class="divider"></li>
 				<li><a href="/receber-pagamento" class="waves-effect waves-light">Receber Atrasado</a></li>
-
+                {{/if}}
                     <li class="divider"></li>
-                <li><a href="/" id="js-sair_button" class="waves-effect waves-light">Sair</a></li>
+                    <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
 			</ul>
 
 

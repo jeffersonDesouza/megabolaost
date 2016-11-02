@@ -16,7 +16,7 @@ Router.route('/', function(){
 
 
 Router.route('/adicionar-jogador',function(){
-	
+
 	this.render('navbar', {
 		to: 'navbar'
 	});
@@ -27,7 +27,7 @@ Router.route('/adicionar-jogador',function(){
 });
 
 Router.route('/lista-jogadores',function(){
-	
+
 	this.render('navbar', {
 		to: 'navbar'
 	});
@@ -40,7 +40,7 @@ Router.route('/lista-jogadores',function(){
 
 
 Router.route('/receber-pagamento',function(){
-	
+
 	this.render('navbar', {
 		to: 'navbar'
 	});
@@ -52,3 +52,18 @@ Router.route('/receber-pagamento',function(){
 })
 
 
+Router.route('/jogadores/:_id',function(){
+    this.render('navbar', {
+		to: 'navbar'
+	});
+
+    this.render('jogadores_detalhes', {
+		to:"main",
+		data:function(){
+			//Meteor.subscribe("websites", Session.get("searchValue"));
+
+
+			return Jogadores.findOne({_id:this.params._id});
+		}
+	});
+})
