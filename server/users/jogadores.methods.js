@@ -10,18 +10,28 @@ export function deletarJogador(jogadorId){
 
 Meteor.methods({
     AddJogador:function(telefone, nome, isPago,jogoArray){
+        if(!this.userId){
+             throw new Meteor.Error(400, 'Usuário deve esar logado');
+        }
 
-        if(Meteor.userId()){
+        let jogador = {
+            'telefone': telefone,
+            'nome': nome,
+            'isPago': isPago,
+            'jogoArray': jogoArray
+        }
+            let jogadorId = Jogadores.findOne({'telefone': jogador.telefone},{_id:1});
 
-            let jogador = {
-                'telefone': telefone,
-                'nome': nome,
-                'isPago': isPago,
-                'jogoArray': jogoArray
+            if(jogadorId){
+                Jogadores.update(jogadorId, {$set: jogador});
+                return;
             }
 
             Jogadores.insert(jogador);
-        }
+
+
+
+
     },
     deletarJogador
 });

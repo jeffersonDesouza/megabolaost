@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">perm_identity</i>
-				<input id="icon_nome" type="text" name="nome" class="validate">
+				<input id="icon_nome" type="text" name="nome" value="{{nome}}" class="validate">
 				<label for="icon_nome">Nome</label>
 			</div>
 		</div>
@@ -15,13 +15,13 @@
 		<div class="row">
 			<div class="input-field">
 				<i class="material-icons prefix">phone</i>
-				<input id="icon_telephone" type="tel" name="telefone" class="validate">
+				<input id="icon_telephone" type="tel" name="telefone" value="{{telefone}}" class="validate">
 				<label for="icon_telephone">Telefone</label>
 			</div>
 		</div>
 
 		<div class="row">
-			<input type="checkbox" id="statuPagamento" name="isPago"/>
+			<input type="checkbox" id="statuPagamento" value="{{isPago}}" name="isPago"/>
 			<label for="statuPagamento">Jogo Pago</label>
 		</div>
 
@@ -31,19 +31,8 @@
 				<label>Escolha os Números do jogador </label>
 			</div>
 
-			{{#each numeros_bolas}}
-				<div class="col s11 range-field">
-
-					<label for="num_1">{{posicao}}º Número</label>
-
-					<div class="range-field">
-						<input  id="{{id}}" name="num_{{posicao}}" class="numero_escolhido" type="range" min="0" max="60" value="0"/>
-					</div>
-				</div>
-
-				<div class="col s1">
-					<p id="label_{{id}}" class="prefix">0</p>
-				</div>
+			{{#each numeros_bolas jogoArray}}
+				{{{htmlNum}}}
 			{{/each}}
 
 		</div>
