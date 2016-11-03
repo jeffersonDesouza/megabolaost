@@ -1,9 +1,6 @@
 Template.adicionar_jogador.onRendered(
     function(){
         $('#div-escolher-numeros').slideToggle('slow');
-
-
-
     }
 );
 
@@ -20,12 +17,10 @@ Template.adicionar_jogador.helpers({
 
     },
 
-
     numeros_bolas(jogoArray){
         if(!jogoArray){
             jogoArray = [0,0,0,0,0,0,0,0,0,0];
         }
-
 
 		bolas_num = [];
 
@@ -44,7 +39,7 @@ Template.adicionar_jogador.helpers({
     				</div>
 
     				<div class="col s1">
-    					<p id="label_${i}" class="prefix"></p>
+    					<p id="label_num_${i}" class="prefix">0</p>
     				</div>
                     `
 
@@ -69,6 +64,12 @@ Template.adicionar_jogador.events({
 
     "click #js-show-add-numeros":function(){
 
+        $('.numero_escolhido').each((index)=>{
+
+            let slideNum = $("#num_"+index);
+
+    		$('#label_'+slideNum.attr('id')).text(slideNum.val());
+        });
 
 
         $('#div-escolher-numeros').slideToggle("slow")
@@ -102,7 +103,7 @@ Template.adicionar_jogador.events({
 
 
 
-        console.log(event.target.isPago.value);
+        console.log(jogoArray);
 
         Meteor.call("AddJogador", telefone, nome, isPago,jogoArray, function(error, result){
             if(error){
@@ -136,7 +137,7 @@ Template.adicionar_jogador.events({
 
 
 		let label_id = 'label_'+$(event.target).attr('id')
-		let valor = $(event.target).val()
+		let valor = $(event.target).val();
 		$('#'+label_id).text(valor);
 
 	}
