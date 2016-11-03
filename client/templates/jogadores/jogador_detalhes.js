@@ -9,7 +9,15 @@ Template.jogadores_detalhes.helpers({
 Template.jogadores_detalhes.events({
     "click #js-excluir-jogador-botao": function(event, template){
 
-        Jogadores.remove({_id:this._id});
+        Meteor.call('deletarJogador', this._id, function(err, result){
+            if(err){
+                console.log(err);
+            }
+            if(result){
+                console.log(result);
+            }
+        });
+
 
     }
 });

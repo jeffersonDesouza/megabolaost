@@ -1,8 +1,9 @@
-
-Template.navbar.onCreated(
-    function helloOnCreated() {
+Template.navbar.onRendered(
+    function(){
         $('.button-collapse').sideNav();
-});
+    }
+);
+
 
 
 Template.navbar.helpers({

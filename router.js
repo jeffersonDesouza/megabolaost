@@ -66,4 +66,19 @@ Router.route('/jogadores/:_id',function(){
 			return Jogadores.findOne({_id:this.params._id});
 		}
 	});
+});
+
+
+Router.route('/jogadores/:_id/edit',function(){
+    this.render('navbar', {
+		to: 'navbar'
+	});
+
+    this.render('adicionar_jogador', {
+		to:"main",
+		data:function(){
+			//Meteor.subscribe("websites", Session.get("searchValue"));
+			return Jogadores.findOne(this.params._id);
+		}
+	});
 })

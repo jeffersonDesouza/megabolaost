@@ -1,3 +1,13 @@
+export function deletarJogador(jogadorId){
+    if(!this.userId){
+         throw new Meteor.Error(400, 'Usuário deve esar logado');
+    }
+
+    Jogadores.remove({_id:jogadorId});
+
+}
+
+
 Meteor.methods({
     AddJogador:function(telefone, nome, isPago,jogoArray){
 
@@ -12,5 +22,6 @@ Meteor.methods({
 
             Jogadores.insert(jogador);
         }
-    }
+    },
+    deletarJogador
 });
