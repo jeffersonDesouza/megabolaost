@@ -4,7 +4,7 @@ Router.configure({
 
 
 Router.route('/', function(){
-	this.render('numeros_sorteados',{
+	this.render('home',{
 		to: 'main'
 	});
 });
@@ -24,7 +24,7 @@ Router.route('/lista-jogadores',function(){
 
 
 Router.route('/salvar-sorteio', function(){
-    this.render('salvar_sorteio_temp',{
+    this.render('salvar_sorteio_template',{
         to:'main'
     })
 })
