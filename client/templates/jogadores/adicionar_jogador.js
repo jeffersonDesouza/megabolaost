@@ -1,10 +1,22 @@
+Template.adicionar_jogador.onRendered(
+    function(){
+        $('#div-escolher-numeros').slideToggle('slow');
 
+
+
+    }
+);
 
 Template.adicionar_jogador.helpers({
     jogadoAdicionado(){
         return Session.get("jogadoAdicionado");
     },
-    submitPage(){
+
+    jogoIsPago(isPago){
+        if(isPago == 'pago'){
+            return true;
+        }
+        return false;
 
     },
 
@@ -32,7 +44,7 @@ Template.adicionar_jogador.helpers({
     				</div>
 
     				<div class="col s1">
-    					<p id="label_${i}" class="prefix">${jogoArray[i]}</p>
+    					<p id="label_${i}" class="prefix"></p>
     				</div>
                     `
 
@@ -49,15 +61,29 @@ Template.adicionar_jogador.helpers({
 });
 
 Template.adicionar_jogador.events({
+    "click #statuPagamento": function(e){
+
+
+        console.log($("#statuPagamento:checked").val())
+    },
+
+    "click #js-show-add-numeros":function(){
+
+
+
+        $('#div-escolher-numeros').slideToggle("slow")
+
+
+
+    },
     "submit #js_salvar_jogador_form": function(event, template){
         let telefone, nome, isPago;
         let jogoArray = [];
 
         telefone = event.target.telefone.value;
         nome = event.target.nome.value;
-        isPago = event.target.isPago.value;
+        isPago = $("#statuPagamento:checked").val();
 
-        let num_1, num_2, num_3, num_4, num_5, num_6, num_7, num_8, num_9, num_10;
 
         $(".numero_escolhido").each(function(index){
 
@@ -76,6 +102,7 @@ Template.adicionar_jogador.events({
 
 
 
+        console.log(event.target.isPago.value);
 
         Meteor.call("AddJogador", telefone, nome, isPago,jogoArray, function(error, result){
             if(error){
@@ -91,7 +118,6 @@ Template.adicionar_jogador.events({
 
         event.target.telefone.value = "";
         event.target.nome.value = "";
-        event.target.isPago.value = "";
 
         event.target.num_1.value = 0;
         event.target.num_2.value = 0;

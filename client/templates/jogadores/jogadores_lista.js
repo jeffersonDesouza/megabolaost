@@ -3,16 +3,16 @@ Template.jogadores_lista.helpers({
         return Jogadores.find({},{nome:1,jogoArray:1});
     },
     estaPago(isPago){
-        if(isPago==='on'){
+        if(isPago == "pago"){
             return "PAGO";
         }
         return "NÃO PAGO"
     },
     pagoCor(isPago){
-        if(isPago === ""){
-            return "#ff8a80 ";
+        if(isPago == "pago"){
+            return "#e0f2f1"
         }
-        return "#e0f2f1"
+        return "#ff8a80 ";
     }
 });
 

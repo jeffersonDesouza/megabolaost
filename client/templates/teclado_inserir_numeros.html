@@ -1,0 +1,16 @@
+<template name="teclado_inserir_numeros">
+
+    <div class="col s11 range-field">
+
+        <label>${i+1}º Número</label>
+
+        <div class="range-field">
+            <input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="range" min="0" max="60" value="${jogoArray[i]}"/>
+        </div>
+    </div>
+
+    <div class="col s1">
+        <p id="label_${i}" class="prefix"></p>
+    </div>
+
+</template>

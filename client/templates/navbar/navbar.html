@@ -11,13 +11,8 @@
 
 				<div class="right">
 
-
-
 			 		<!-- Modal Trigger -->
-                    {{#if isNotLoggedIn}}
- 					    <!--<button id="modal-trigger" data-target="modal1" class="btn">Login</button>-->
-                        {{> loginButtons align="right"}}
-                    {{/if}}
+
                     {{#if isLoggedIn}}
                         <ul>
                 		    <li>{{getUsername}}</li>
@@ -30,15 +25,18 @@
                         <li><a href="/" class="waves-effect waves-light">Página Inicial</a></li>
                         <li><a href="/adicionar-jogador" class="waves-effect waves-light">Adicionar Jogador</a></li>
                         <li><a href="/lista-jogadores" class="waves-effect waves-light">Lista de Jogadores</a></li>
+                        <li><a href="/salvar-sorteio" clas="waves-effect waves-light">Salvar Sorteio</a></li>
                         <li><a href="/receber-pagamento" class="waves-effect waves-light">Receber Atrasado</a></li>
                     </ul>
                     {{/if}}
 
-
-
+                    <div class="right">
+                        {{#if isNotLoggedIn}}
+                        <!--<button id="modal-trigger" data-target="modal1" class="btn">Login</button>-->
+                        {{> loginButtons align="right"}}
+                        {{/if}}
+                    </div>
 				</div>
-
-
 
 
 		</div>
