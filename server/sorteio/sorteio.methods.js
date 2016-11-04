@@ -7,6 +7,8 @@ Meteor.methods({
 
         adicionarTodosNumerosSorteado(sorteio);
 
+        aferirPontuacaoJogadores();
+
 
     },
     listarSorteios:function(){
@@ -21,12 +23,20 @@ Meteor.methods({
 function adicionarTodosNumerosSorteado(sorteio){
     let id = NumerosSorteados.findOne({}, {_id:1});
 
-    console.log(id._id);
-    console.log(sorteio.numerosSorteados);
 
 
     NumerosSorteados.update(
        { _id: id._id },
-       { $addToSet: { todosNumerosSorteados: {$each: sorteio.numerosSorteados, $sort:1} } }
+       {
+           $addToSet: { todosNumerosSorteados: {$each: sorteio.numerosSorteados.sort(), $sort:1} },
+           $set:{ultimaModificacao: new Date()}
+       }
     )
+}
+function aferirPontuacaoJogadores(){
+
+    let todosJogadores = Jogadores.find({"isPago":"pago"},{jogoArray:1});
+    console.log("Jogadores: ", todosJogadores);
+
+
 }

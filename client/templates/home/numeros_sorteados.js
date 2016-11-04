@@ -12,8 +12,8 @@ Template.numeros_sorteados.helpers({
             }
             if(result){
                 console.log("resultado", result.todosNumerosSorteados);
-                let vetor = result.todosNumerosSorteados;
-                Session.set('todosNumerosSorteados',result.todosNumerosSorteados);
+
+                Session.set('todosNumerosSorteados',result.todosNumerosSorteados.sort());
             }
         });
 

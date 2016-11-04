@@ -7,8 +7,12 @@
       </div>
 
       <div class="grey lighten-5" style="padding: 10px">
-        <span>
-            {{todosNumerosSorteados}}
+        <span style="font-size:20px">
+
+            <!-- {{todosNumerosSorteados}} -->
+            {{#each todosNumerosSorteados}}
+                    {{this}}
+            {{/each}}
         </span>
 
       </div>

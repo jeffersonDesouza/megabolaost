@@ -60,7 +60,7 @@ Template.salvar_sorteio_template.events({
         let sorteio = {
             'dataSorteio': dataSorteio,
             'linkSorteio': linkSorteio,
-            'numerosSorteados': numerosSorteados
+            'numerosSorteados': numerosSorteados.sort()
         }
 
         Meteor.call("AddSorteio", sorteio, function(error, result){
