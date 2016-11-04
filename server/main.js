@@ -25,10 +25,17 @@ Meteor.startup(() => {
             name:"Neto de Evaldo",
             isAdm:true
         };
-
-
         //Jogadores.insert(novoJogador);
+    }
+
+    if(!NumerosSorteados.findOne()){
+        NumerosSorteados.insert({
+            'todosNumerosSorteados':[],
+            'ultimaModificacao': new Date()
+        });
 
     }
+
+
 
 });

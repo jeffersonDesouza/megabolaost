@@ -6,7 +6,18 @@ Template.numeros_sorteados.onRendered(()=>{
 
 Template.numeros_sorteados.helpers({
     todosNumerosSorteados(){
-        return "01 - 02 - 03 - 04 - 05 - 06 - 07 - 08 - 09 - 10 ";
+        Meteor.call("listarTodosNumerosSorteados", function(error, result){
+            if(error){
+                console.log("error", error);
+            }
+            if(result){
+                console.log("resultado", result.todosNumerosSorteados);
+                let vetor = result.todosNumerosSorteados;
+                Session.set('todosNumerosSorteados',result.todosNumerosSorteados);
+            }
+        });
+
+        return Session.get('todosNumerosSorteados');
     },
     sorteiosLista(){
 

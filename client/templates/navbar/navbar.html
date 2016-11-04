@@ -13,7 +13,9 @@
 
 			 		<!-- Modal Trigger -->
                     {{#if isLoggedIn}}
-                        {{> link_navbar}}
+                        <ul id="nav-mobile" class="hide-on-med-and-down" style="display:inline;">
+                            {{> link_navbar}}
+                        </ul>
                     {{/if}}
 
 
@@ -35,15 +37,14 @@
 
 		</div>
 
+        {{#if isLoggedIn}}
 			<!-- Side bar menu escondido-->
-			<ul class="side-nav teal lighten-1" id="mobile-demo">
-                {{#if isLoggedIn}}
-    				{{> link_navbar}}                
-                {{/if}}
+			<ul class="side-nav teal lighten-2" id="mobile-demo">
+                    	{{> link_navbar}}
                     <li class="divider"></li>
                     <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
 			</ul>
-
+        {{/if}}
 
 	</nav>
 
@@ -78,10 +79,10 @@
 
 
 <template name="link_navbar">
-    <ul id="nav-mobile" class="hide-on-med-and-down" style="display:inline;">
+
         <li><a href="/salvar-sorteio" clas="waves-effect waves-light">Salvar Sorteio</a></li>
         <li><a href="/adicionar-jogador" class="waves-effect waves-light">Adicionar Jogador</a></li>
         <li><a href="/lista-jogadores" class="waves-effect waves-light">Lista de Jogadores</a></li>
         <li><a href="/receber-pagamento" class="waves-effect waves-light">Receber Atrasado</a></li>
-    </ul>
+
 </template>
