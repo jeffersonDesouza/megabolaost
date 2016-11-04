@@ -1,8 +1,16 @@
 <template name="adicionar_jogador">
 
 <div class="container">
+    <div class="row center">
+        {{#if nome}}
+            <h5>Editar Jogador</h5>
+        {{else}}
+            <h5>Adicionar Jogador</h5>
+        {{/if}}
+    </div>
 
 	<form id="js_salvar_jogador_form">
+
 
 		<div class="row">
 			<div class="input-field col s12">

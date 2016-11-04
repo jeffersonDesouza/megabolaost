@@ -48,20 +48,22 @@ Template.salvar_sorteio_template.helpers({
 Template.salvar_sorteio_template.events({
     'submit #js-salvar-sorteio'(){
 
-        let dataSorteio;
+        let dataSorteio, linkSorteio;
         let numerosSorteados = [];
-
-        dataSorteio = event.target.dataSorteio.value;
-
+            dataSorteio = event.target.dataSorteio.value;
+            linkSorteio = event.target.link.value;
 
         $(".numero_escolhido2").each(function(){
                 numerosSorteados.push($(this).val());
         });
 
-        console.log(numerosSorteados);
+        let sorteio = {
+            'dataSorteio': dataSorteio,
+            'linkSorteio': linkSorteio,
+            'numerosSorteados': numerosSorteados
+        }
 
-
-        Meteor.call("AddSorteio", dataSorteio, numerosSorteados, function(error, result){
+        Meteor.call("AddSorteio", sorteio, function(error, result){
             if(error){
                 console.log("error", error);
             }
@@ -72,6 +74,7 @@ Template.salvar_sorteio_template.events({
 
 
         event.target.dataSorteio.value = "";
+        event.target.link.value = "";
 
         $(".numero_escolhido2").each(function(index){
                 numerosSorteados.push($(this).val(0));

@@ -4,7 +4,8 @@ Jogadores = new Mongo.Collection("jogadores");
 
 Sorteios = new Mongo.Collection("sorteios");
 
-Postagens = new Mongo.Collection("postagens");
+NumerosSorteados = new Mongo.Collection("numerosSorteados");
+
 
 
 

@@ -5,6 +5,10 @@
 	box-sizing: border-box;
 }
 
+body{
+    background-color: #fafafa;
+}
+
 
 .quadro-jogos{
 	margin: 1px;
@@ -41,8 +45,30 @@ a:hover {
 a:active {
     text-decoration: none;
 	color:#fff;
+
 }
 
+.a-sorteio{
+    color: blue;
+}
+
+/* visited link */
+.a-sorteio:visited {
+    text-decoration: none;
+	color:blue;
+}
+
+/* mouse over link */
+.a-sorteio:hover {
+    text-decoration: none;
+	color:blue;
+}
+
+/* selected link */
+.a-sorteio:active {
+    text-decoration: none;
+	color:blue;
+}
 
 
 

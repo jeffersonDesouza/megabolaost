@@ -1,10 +1,13 @@
 Meteor.methods({
-    AddSorteio:function(dataSorteio, numerosSorteados){
+    AddSorteio:function(sorteio){
 
-         Sorteios.insert({
-             'dataSorteio': dataSorteio,
-             'numerosSorteados': numerosSorteados
-         });
+//         Sorteios.insert(sorteio);
 
+        Sorteios.insert(sorteio);
+
+
+    },
+    listarSorteios:function(){
+        return Sorteios.find();
     }
 });
