@@ -6,22 +6,23 @@ Template.numeros_sorteados.onRendered(()=>{
 
 Template.numeros_sorteados.helpers({
     todosNumerosSorteados(){
+        /*
         Meteor.call("listarTodosNumerosSorteados", function(error, result){
             if(error){
                 console.log("error", error);
             }
             if(result){
-                console.log("resultado", result.todosNumerosSorteados);
-
-                Session.set('todosNumerosSorteados',result.todosNumerosSorteados.sort());
+                Session.set('todosNumerosSorteados', result.todosNumerosSorteados);
             }
         });
 
         return Session.get('todosNumerosSorteados');
+        */
+        return NumerosSorteados.findOne({}, {todosNumerosSorteados:1});
     },
     sorteiosLista(){
 
-        /*Meteor.call("listarSorteios", function(error, result){
+        Meteor.call("listarSorteios", function(error, result){
             if(error){
                 console.log("error", error);
             }
@@ -32,9 +33,7 @@ Template.numeros_sorteados.helpers({
                 return result;
 
             }
-        });*/
-
-        return Sorteios.find();
+        });
 
     }
 

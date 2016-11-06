@@ -1,42 +1,115 @@
 Meteor.methods({
     AddSorteio:function(sorteio){
 
-//         Sorteios.insert(sorteio);
-
         Sorteios.insert(sorteio);
 
         adicionarTodosNumerosSorteado(sorteio);
 
-        aferirPontuacaoJogadores();
+        aferirPontuacaoJogadores(collectionJogadoresPago(), listarTodosNumerosSorteados().todosNumerosSorteados);
 
 
     },
     listarSorteios:function(){
         return Sorteios.find();
     },
-    listarTodosNumerosSorteados: function(){
-        return NumerosSorteados.findOne({}, {_id:0, todosNumerosSorteados:1});
-    }
+    listarTodosNumerosSorteados
 });
+
+export function listarTodosNumerosSorteados(){
+
+    return NumerosSorteados.findOne({}, {todosNumerosSorteados:1});
+}
+
 
 
 function adicionarTodosNumerosSorteado(sorteio){
-    let id = NumerosSorteados.findOne({}, {_id:1});
-
-
+    let id = NumerosSorteados.findOne();
 
     NumerosSorteados.update(
        { _id: id._id },
        {
-           $addToSet: { todosNumerosSorteados: {$each: sorteio.numerosSorteados.sort(), $sort:1} },
+           $addToSet: { todosNumerosSorteados: {$each: sorteio.numerosSorteados} },
            $set:{ultimaModificacao: new Date()}
        }
     )
+
+    NumerosSorteados.update(
+       { _id: id._id },
+       { $push: { todosNumerosSorteados: {$each: [], $sort:1} } }
+    );
+
 }
-function aferirPontuacaoJogadores(){
 
-    let todosJogadores = Jogadores.find({"isPago":"pago"},{jogoArray:1});
-    console.log("Jogadores: ", todosJogadores);
+function collectionJogadoresPago(){
+    //Poderimos baser com uma data de sorteio assim permite escalar o sistema para multisorteios
+    return Jogadores.find({"isPago":"pago"},{jogoArray:1});
+}
 
 
+
+///
+function aferirPontuacaoJogadores(collecaoJogadores, numerosSorteados){
+    console.log(numerosSorteados);
+    collecaoJogadores.forEach(
+		function(value){
+			pontuarJogador(value, numerosSorteados);
+		}
+	);
+}
+
+function pontuarJogador(jogador, numerosSorteados){
+
+    pontos = 0;
+	jogador.jogoArray.forEach(
+		function(value){
+			if(isValorPresenteBuscaBinaria(value, numerosSorteados)) {
+
+            pontos++;
+
+                Jogadores.update(
+                   { _id: jogador._id },
+                   { $set:
+                      {
+                        'pontos':pontos
+                      }
+                   }
+               );
+
+            };
+		}
+	);
+
+    if(jogador.pontos === 10){
+        Jogadores.update(
+           { _id: jogador._id },
+           { $set:
+              {
+                'isVencedorMaisPontos':true,
+              }
+           }
+       );
+    }
+
+}
+
+function isValorPresenteBuscaBinaria(valorBuscado, vetorValores) {
+
+   let esq, meio, dir;
+   esq = 0; dir = vetorValores.length;
+
+   while (esq <= dir) {
+      meio = Math.trunc((esq + dir)/2);
+
+      if (vetorValores[meio] == valorBuscado){
+	    return true;
+      }
+
+      if (vetorValores[meio] < valorBuscado) {
+      	esq = meio + 1
+      }else{
+      	dir = meio - 1;
+      }
+
+   }
+   return false;
 }

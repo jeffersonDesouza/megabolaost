@@ -1,49 +1,79 @@
-<template name="vencedores">
+<template name="vencedores_quadro">
+
+    {{#if temVencedor}}
 
 		<div class="row card-panel" >
-			<div class="col s12 text-uppercase center">
-				<h5>vencedores</h5>
+
+        	<div class="col s12 text-uppercase center">
+				<h5>Vencedores</h5>
 			</div>
 
+            {{#each vencedoresMAISpontos}}
+            <div class="col s6"  style="color:#fff">
+                <div class=" light-blue darken-2 center" style="padding: 5px">
+                    Mais pontos
+                </div>
+                <div class=" light-blue darken-3" style="padding: 10px">
+                    {{#each jogoArray}}
+                        <a class="btn-floating disabled botao_teclado center">{{this}}</a>
+                    {{/each}}
+                </div>
+
+                <div class="light-blue darken-4" style="padding: 5px">
+                    Nome: {{nome}}
+                    <span class="right" style="font-size: 20px"><strong>Acertos:{{pontos}}</strong></span>
+                </div>
+
+            </div>
+            {{/each}}
+
+
+
+
 			<div class="col s6"  style="color:#fff">
-				<div class=" light-blue darken-2 center" style="padding: 5px">
-					MAIS PONTOS
-				</div>
-				<div class=" light-blue darken-3" style="padding: 10px">
-					<p class="center">
-				    	10 - 11 - 22 -33 - 44 - 55 - 66 - 77 - 88 - 99
-                    </p>
-				</div>
+                {{#each vencedoresMENOSpontos}}
+    				<div class="red darken-1 center" style="padding: 5px">
+    					MENOS PONTOS
+    				</div>
 
-				<div class="light-blue darken-4" style="padding: 5px">
-					Nome: Joao das Quantas
-					<span class="right" style="font-size: 20px"><strong>Certas:10</strong></span>
-				</div>
+    				<div class="red darken-2" style="padding: 10px">
+                        {{#each jogoArray}}
+                            {{this}} -
+                        {{/each}}
 
-			</div>
+    				</div>
 
-
-			<div class="col s6"  style="color:#fff">
-
-				<div class="red darken-1 center" style="padding: 5px">
-					MENOS PONTOS
-				</div>
-
-				<div class="red darken-2" style="padding: 10px">
-					<p class="center" >
-					    10 - 11 - 22 -33 - 44 - 55 - 66 - 77 - 88 - 99
-				    </p>
-
-				</div>
-
-				<div class="red darken-3" style="padding: 5px">
-					Nome: Fulano
-					<i class="right" style="font-size: 20px">Certas:0</i>
-				</div>
+                    <div class="light-blue darken-4" style="padding: 5px">
+                        Nome: {{nome}}
+                        <span class="right" style="font-size: 20px"><strong>Acertos:{{pontos}}</strong></span>
+                    </div>
+                {{/each}}
 
 			</div>
 
 		</div>
+    {{/if}}
 
+</template>
+
+
+<template name="vencedor">
+
+    <div class="col s6"  style="color:#fff">
+        <div class=" light-blue darken-2 center" style="padding: 5px">
+            {{tipo_ponto}}
+        </div>
+        <div class=" light-blue darken-3" style="padding: 10px">
+            {{#each jogoArray}}
+                {{this}}
+            {{/each}}
+        </div>
+
+        <div class="light-blue darken-4" style="padding: 5px">
+            Nome: {{nome}}
+            <span class="right" style="font-size: 20px"><strong>Acertos:{{pontos}}</strong></span>
+        </div>
+
+    </div>
 
 </template>

@@ -24,6 +24,12 @@ Template.adicionar_jogador.helpers({
 
 		bolas_num = [];
 
+
+//        <div class="range-field">
+//            <input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="range" min="1" max="60" value="${jogoArray[i]}"/>
+//        </div>
+
+
 		for(let i=0; i<(jogoArray.length); i++){
 			bolas_num[i] = {
 				id: "num_"+i,
@@ -33,9 +39,10 @@ Template.adicionar_jogador.helpers({
 
     					<label>${i+1}º Número</label>
 
-    					<div class="range-field">
-    						<input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="range" min="0" max="60" value="${jogoArray[i]}"/>
+    					<div class="col s7range-field">
+    						<input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="text" min="1" max="60" value="${jogoArray[i]}"/>
     					</div>
+
     				</div>
 
     				<div class="col s1">
@@ -87,32 +94,15 @@ Template.adicionar_jogador.events({
 
 
         $(".numero_escolhido").each(function(index){
-
+            jogoArray.push(Number($(this).val()));
         });
-
-        jogoArray.push(event.target.num_1.value);
-        jogoArray.push(event.target.num_2.value);
-        jogoArray.push(event.target.num_3.value);
-        jogoArray.push(event.target.num_4.value);
-        jogoArray.push(event.target.num_5.value);
-        jogoArray.push(event.target.num_6.value);
-        jogoArray.push(event.target.num_7.value);
-        jogoArray.push(event.target.num_8.value);
-        jogoArray.push(event.target.num_9.value);
-        jogoArray.push(event.target.num_0.value);
-
-
-
-        console.log(jogoArray);
 
         Meteor.call("AddJogador", telefone, nome, isPago,jogoArray, function(error, result){
             if(error){
                 console.log("error", error);
             }
             if(result){
-
                 Session.set('jogadoAdicionado', true);
-
             }
         });
 
@@ -120,16 +110,9 @@ Template.adicionar_jogador.events({
         event.target.telefone.value = "";
         event.target.nome.value = "";
 
-        event.target.num_1.value = 0;
-        event.target.num_2.value = 0;
-        event.target.num_3.value = 0;
-        event.target.num_4.value = 0;
-        event.target.num_5.value = 0;
-        event.target.num_6.value = 0;
-        event.target.num_7.value = 0;
-        event.target.num_8.value = 0;
-        event.target.num_9.value = 0;
-        event.target.num_0.value = 0;
+        $(".numero_escolhido").each(function(index){
+                jogoArray.push($(this).val(0));
+        });
 
         return false;
     },

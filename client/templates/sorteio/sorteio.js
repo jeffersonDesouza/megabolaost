@@ -54,7 +54,7 @@ Template.salvar_sorteio_template.events({
             linkSorteio = event.target.link.value;
 
         $(".numero_escolhido2").each(function(){
-                numerosSorteados.push($(this).val());
+                numerosSorteados.push(Number($(this).val()));
         });
 
         let sorteio = {

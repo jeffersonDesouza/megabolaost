@@ -10,8 +10,20 @@ Sorteios = new Mongo.Collection("sorteios");
 NumerosSorteados = new Mongo.Collection("numerosSorteados");
 
 
+Accounts.ui.config({
+	passwordSignupFields: "USERNAME_AND_EMAIL"
+});
 
 
+if(!Meteor.users.findOne()){
+
+    var user = {
+        username: "988157090",
+        password: "ira123ieza",
+    };
+
+    Accounts.createUser(user);
+}
 
 /*
 Session.set('bolas', function(){

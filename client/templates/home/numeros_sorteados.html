@@ -10,8 +10,8 @@
         <span style="font-size:20px">
 
             <!-- {{todosNumerosSorteados}} -->
-            {{#each todosNumerosSorteados}}
-                    {{this}}
+            {{#each todosNumerosSorteados.todosNumerosSorteados}}
+                    <a class="btn-floating disabled botao_teclado center">{{this}}</a>
             {{/each}}
         </span>
 
@@ -41,7 +41,7 @@
                                 {{numerosSorteados}}
                             </td>
                             <td>
-                                <a href="{{linkSorteio}}" class="a-sorteio" target="blank">Sorteio no site da Mega</a>
+                                <a href="{{linkSorteio}}" class="a-sorteio" target="blank">Sorteio no Site da Mega</a>
                             </td>
                         </tr>
 
