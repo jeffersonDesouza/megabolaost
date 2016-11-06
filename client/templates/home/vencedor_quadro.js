@@ -17,7 +17,14 @@ Template.vencedores_quadro.helpers({
 
     temVencedor(){
 
-        return Jogadores.findOne({'isVencedor': true}).isVencedor;
+        Session.set('temVencedor', Jogadores.findOne({'isVencedor': true}).isVencedor)
+
+        if(Session.get('temVencedor')){
+            return true;
+        }
+        return false;
+
+        //return Session.get('temVencedor');
         //return Session.get("temVencedorMaisPontos");
     },
 
@@ -27,10 +34,10 @@ Template.vencedores_quadro.helpers({
 
     },
     vencedoresMENOSpontos(){
-        if(Session.get("temVencedorMaisPontos")){
-            let vet = Jogadores.findOne({}, {sort: {pontos: 1}});
+        if( Session.get('temVencedor')){
+            let jogadorComMenosPontos = Jogadores.findOne({}, {sort: {pontos: 1}});
 
-            return listarVencedoresPorPontos(vet.pontos);
+            return listarVencedoresPorPontos(jogadorComMenosPontos.pontos);
         }
     }
 

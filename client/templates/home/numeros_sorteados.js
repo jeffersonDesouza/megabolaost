@@ -28,12 +28,13 @@ Template.numeros_sorteados.helpers({
             }
             if(result){
 
-                console.log(result);
 
-                return result;
+                Session.set('sorteios', result);
 
             }
         });
+
+        return Session.get('sorteios');
 
     }
 
