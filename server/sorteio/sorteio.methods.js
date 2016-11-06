@@ -84,7 +84,7 @@ function pontuarJogador(jogador, numerosSorteados){
            { _id: jogador._id },
            { $set:
               {
-                'isVencedorMaisPontos':true,
+                'isVencedor':true,
               }
            }
        );

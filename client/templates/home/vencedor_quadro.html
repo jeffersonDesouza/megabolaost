@@ -1,11 +1,13 @@
 <template name="vencedores_quadro">
 
+
+
     {{#if temVencedor}}
 
 		<div class="row card-panel" >
 
         	<div class="col s12 text-uppercase center">
-				<h5>Vencedores</h5>
+				<h5>vencedores</h5>
 			</div>
 
             {{#each vencedoresMAISpontos}}
@@ -15,7 +17,7 @@
                 </div>
                 <div class=" light-blue darken-3" style="padding: 10px">
                     {{#each jogoArray}}
-                        <a class="btn-floating disabled botao_teclado center">{{this}}</a>
+                        {{this}} -
                     {{/each}}
                 </div>
 

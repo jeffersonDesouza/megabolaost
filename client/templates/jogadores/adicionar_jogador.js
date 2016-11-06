@@ -40,7 +40,7 @@ Template.adicionar_jogador.helpers({
     					<label>${i+1}º Número</label>
 
     					<div class="col s7range-field">
-    						<input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="text" min="1" max="60" value="${jogoArray[i]}"/>
+    						<input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="number" min="1" max="60" value="${jogoArray[i]}"/>
     					</div>
 
     				</div>

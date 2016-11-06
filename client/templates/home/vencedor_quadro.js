@@ -3,29 +3,27 @@ function listarVencedoresPorPontos(pontos){
 }
 
 
+/*
+Meteor.setInterval(function(){
+    Session.set("vencedoresMaisPontos", function(){
+        return = Jogadores.find({'isVencedor': true});
+    });
+}, 1000)
+*/
 
 
 Template.vencedores_quadro.helpers({
+
+
     temVencedor(){
-        return true;
+
+        return Jogadores.findOne({'isVencedor': true}).isVencedor;
         //return Session.get("temVencedorMaisPontos");
     },
 
-    vencedoresMAISpontos: function(){
+    vencedoresMAISpontos(){
 
-        let listaVencedores = Jogadores.find({'isVencedor': true});
-
-
-        if(listaVencedores.length>0){
-            console.log("tem");
-            Session.set("temVencedorMaisPontos", true);
-        }else{
-
-            console.log("Não tem");
-            Session.set("temVencedorMaisPontos", false);
-        }
-
-        return listaVencedores;
+        return Jogadores.find({'isVencedor': true});
 
     },
     vencedoresMENOSpontos(){
