@@ -29,7 +29,7 @@ Template.salvar_sorteio_template.helpers({
                         <label>${i+1}º Número</label>
 
                         <div class="col s4">
-                            <input  id="num_${i}" name="num_${i}" class="numero_escolhido2" type="number" min="0" max="60" value="${jogoArray[i]}"/>
+                            <input  id="num_${i}" name="num_${i}" class="numero_escolhido2" type="number" min="1" max="60" value="${jogoArray[i]}"/>
                         </div>
                     </div>
 

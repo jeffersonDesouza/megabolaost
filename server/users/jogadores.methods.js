@@ -9,9 +9,14 @@ export function AddJogador(telefone, nome, isPago,jogoArray){
         throw new Meteor.Error(400, 'Usuário deve ser Administrador');
     }
 
-    if(Sorteios.findOne({"isVencedor":true})){
+    if(Sorteios.findOne()){
         throw new Meteor.Error(500, 'Os sorteios começaram');
     }
+
+    if(Jogadores.findOne({"isVencedor":true})){
+        throw new Meteor.Error(500, 'Já existem vencedores');
+    }
+
 
 
     let jogador = {
@@ -19,16 +24,19 @@ export function AddJogador(telefone, nome, isPago,jogoArray){
         'nome': nome,
         'isPago': isPago,
         'jogoArray': jogoArray.sort(),
-        'pontos': 0
+        'pontos': 0,
+        'isVencedor': false,
     }
-    let jogadorId = Jogadores.findOne({'telefone': jogador.telefone},{_id:1});
+
+    let jogadorId = Jogadores.findOne({'telefone': jogador.telefone});
 
     if(jogadorId){
-        Jogadores.update(jogadorId, {$set: jogador});
-        return;
+        Jogadores.update({_id:jogadorId._id}, {$set: jogador});
+
+    }else{
+        Jogadores.insert(jogador);
     }
 
-    Jogadores.insert(jogador);
 }
 
 export function deletarJogador(jogadorId){

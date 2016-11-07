@@ -1,5 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 
+if(!NumerosSorteados.findOne()){
+    NumerosSorteados.insert({
+        'todosNumerosSorteados':[],
+        'ultimaModificacao': new Date()
+    });
+
+}
 
 
 Meteor.startup(() => {
@@ -24,18 +31,12 @@ Meteor.startup(() => {
                 telefone: neto.username,
                 nome: "Neto de Evaldo",
                 isPago: 'pago',
-                jogoArray:[],
+                jogoArray:[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
                 pontos:0,
                 isVencedor: false,
                 createAt: new Date()
             }
         );
-    }
-
-
-
-    if(!Jogadores.findOne()){
-
 
         Jogadores.insert(
             {
@@ -65,13 +66,7 @@ Meteor.startup(() => {
     }
 
 
-    if(!NumerosSorteados.findOne()){
-        NumerosSorteados.insert({
-            'todosNumerosSorteados':[],
-            'ultimaModificacao': new Date()
-        });
 
-    }
 
 
 

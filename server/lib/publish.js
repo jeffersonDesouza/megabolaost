@@ -1,13 +1,6 @@
-Meteor.publish("jogadores", function(searchFone){
+Meteor.publish("jogadores", function(argument){
 
     if(this.userId){
-
-        const selector = {};
-
-       selector.telefone = {$regex: `^${searchFone}`, $options: 'i'};
-
-//       return Usuarios.find(selector);
-
         return Jogadores.find();
     }
 
@@ -20,19 +13,12 @@ Meteor.publish("users", function(argument){
     if(this.userId){
         return Meteor.users.find();
     }
-
 });
 
 Meteor.publish("sorteios", function(argument){
-    if(this.userId){
         return Sorteios.find();
-    }
-
 });
 
 Meteor.publish("numerosSorteados", function(argument){
-    if(this.userId){
         return NumerosSorteados.find();
-    }
-
 });

@@ -97,7 +97,7 @@ Template.adicionar_jogador.events({
             jogoArray.push(Number($(this).val()));
         });
 
-        Meteor.call("AddJogador", telefone, nome, isPago,jogoArray, function(error, result){
+        Meteor.call("AddJogador", telefone, nome, isPago,jogoArray.sort(), function(error, result){
             if(error){
                 console.log("error", error);
             }

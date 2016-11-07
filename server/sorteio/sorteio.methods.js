@@ -1,7 +1,7 @@
 Meteor.methods({
     AddSorteio:function(sorteio){
 
-        if(Jogadores.findOne({"isVencedor":true})){
+        if(!this.userId || Jogadores.findOne({"isVencedor":true})){
             throw new Meteor.Error(500, 'Já existe vencedor,. não pode adicionar sorteio');
         }
 
@@ -90,7 +90,7 @@ function pontuarJogador(jogador, numerosSorteados){
 		}
 	);
 
-    if(jogador.pontos === 10 && jogador.isPago === true){
+    if(jogador.pontos === 10){
         Jogadores.update(
            { _id: jogador._id },
            { $set:

@@ -13,19 +13,13 @@ Meteor.setInterval(function(){
 
 
 Template.vencedores_quadro.helpers({
-
-
     temVencedor(){
+        let jogador = Jogadores.findOne({'isVencedor': true});
 
-        Session.set('temVencedor', Jogadores.findOne({'isVencedor': true}).isVencedor)
 
-        if(Session.get('temVencedor')){
-            return true;
-        }
-        return false;
+        Session.set('temVencedor', jogador.isVencedor);
 
-        //return Session.get('temVencedor');
-        //return Session.get("temVencedorMaisPontos");
+        return Session.get('temVencedor');
     },
 
     vencedoresMAISpontos(){
@@ -33,18 +27,12 @@ Template.vencedores_quadro.helpers({
         return Jogadores.find({'isVencedor': true});
 
     },
+
     vencedoresMENOSpontos(){
-        if( Session.get('temVencedor')){
+        if(Session.get('temVencedor')){
             let jogadorComMenosPontos = Jogadores.findOne({}, {sort: {pontos: 1}});
 
             return listarVencedoresPorPontos(jogadorComMenosPontos.pontos);
         }
-    }
-
-});
-
-Template.vencedores_quadro.events({
-    "click #foo": function(event, template){
-
     }
 });

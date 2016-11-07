@@ -22,7 +22,10 @@
                     <span>Pago: {{estaPago isPago}}</span>
                     {{/if}}
                     <br>
-                    Numeros: {{jogoArray}}
+                    Numeros:
+                        {{#each jogoArray}}
+                            {{this}}
+                        {{/each}}
                     <br>
                     Número de acertos: {{pontos}}
                     <br>

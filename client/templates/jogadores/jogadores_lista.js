@@ -13,7 +13,7 @@ Template.jogadores_lista.helpers({
            return Jogadores.find(selector);
         }
 
-        return Jogadores.find({});
+        return Jogadores.find({}, {sort:{pontos:-1}});
     },
     estaPago(isPago){
         if(isPago == "pago"){
