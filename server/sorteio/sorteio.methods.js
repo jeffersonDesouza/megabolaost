@@ -90,7 +90,7 @@ function pontuarJogador(jogador, numerosSorteados){
 		}
 	);
 
-    if(jogador.pontos === 10){
+    if(jogador.pontos >9){
         Jogadores.update(
            { _id: jogador._id },
            { $set:

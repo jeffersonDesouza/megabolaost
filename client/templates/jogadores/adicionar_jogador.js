@@ -37,10 +37,10 @@ Template.adicionar_jogador.helpers({
                 htmlNum:
                     `<div class="col s11 range-field">
 
-    					<label>${i+1}º Número</label>
+    					<label for="num_${i}" data-error="Este valor ja foi informado">${i+1}º Número</label>
 
-    					<div class="col s7range-field">
-    						<input  id="num_${i}" name="num_${i}" class="numero_escolhido" type="number" min="1" max="60" value="${jogoArray[i]}"/>
+    					<div class="col s4 range-field">
+    						<input  id="num_${i}" name="num_${i}" class="numero_escolhido required" type="number" min="1" max="60" value="${jogoArray[i]}"/>
     					</div>
 
     				</div>
@@ -118,10 +118,24 @@ Template.adicionar_jogador.events({
     },
     'change .numero_escolhido': function(event){
 
-
 		let label_id = 'label_'+$(event.target).attr('id')
-		let valor = $(event.target).val();
-		$('#'+label_id).text(valor);
+		var valor = $(event.target).val();
+        var countRepeat = 0;
+
+        $(".numero_escolhido").each(function(index){
+
+            if($(this).val() && valor == $(this).val()){
+                countRepeat++;
+                if(countRepeat>1){
+                    console.log("São iguais / index: ",index, "repeat: ", countRepeat);
+                    $(this).addClass("invalid");
+                    $(this).val(0);
+                }
+            }else{
+                $('#'+label_id).text(valor);
+            }
+        });
+
 
 	}
 });
