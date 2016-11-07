@@ -1,4 +1,11 @@
 <template name="jogadores_lista">
+    <div class="row center">
+        <p>
+            Informe seu telefone e confira seu jogo
+        </p>
+        {{> pesquisaJogador}}
+    </div>
+
 
     <div class="row center">
         <h5>Lista de Jogadores</h5>
@@ -11,15 +18,21 @@
                 <li class="collection-item" style="padding-rght:10px">
                     <span class="title">Nome: {{nome}}</span>
                     <br>
+                    {{#if isLoggedIn}}
                     <span>Pago: {{estaPago isPago}}</span>
+                    {{/if}}
                     <br>
                     Numeros: {{jogoArray}}
                     <br>
                     Número de acertos: {{pontos}}
                     <br>
+
+                    {{#if isLoggedIn}}
                     <div class="center">
                         <a href="/jogadores/{{_id}}" class="waves-effect waves-light btn blue darken-2">Detalhes</a>
                     </div>
+                    {{/if}}
+
                 </li>
             </div>
             {{/each}}

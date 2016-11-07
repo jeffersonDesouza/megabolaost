@@ -1,19 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 
-Jogadores = new Mongo.Collection("jogadores");
-
-Sorteios = new Mongo.Collection("sorteios");
-
-NumerosSorteados = new Mongo.Collection("numerosSorteados");
-
-
 
 
 Meteor.startup(() => {
 
 
+    if(!Meteor.users.findOne()){
 
-    if(!Jogadores.findOne()){
+        var user = {
+        username: "988157090",
+        password: "ira123ieza",
+        };
+
+        Accounts.createUser(user);
 
         let neto = Meteor.users.findOne({username: "988157090"});
 
@@ -31,6 +30,12 @@ Meteor.startup(() => {
                 createAt: new Date()
             }
         );
+    }
+
+
+
+    if(!Jogadores.findOne()){
+
 
         Jogadores.insert(
             {

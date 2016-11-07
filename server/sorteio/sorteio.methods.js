@@ -1,6 +1,10 @@
 Meteor.methods({
     AddSorteio:function(sorteio){
 
+        if(Jogadores.findOne({"isVencedor":true})){
+            throw new Meteor.Error(500, 'Já existe vencedor,. não pode adicionar sorteio');
+        }
+
         Sorteios.insert(sorteio);
 
         adicionarTodosNumerosSorteado(sorteio);
@@ -23,6 +27,11 @@ export function listarTodosNumerosSorteados(){
 
 
 function adicionarTodosNumerosSorteado(sorteio){
+    if(Jogadores.findOne({"isVencedor":true})){
+        throw new Meteor.Error(500, 'Já existe vencedor,. não pode adicionar sorteio');
+    }
+
+
     let id = NumerosSorteados.findOne();
 
     NumerosSorteados.update(
@@ -49,6 +58,8 @@ function collectionJogadoresPago(){
 
 ///
 function aferirPontuacaoJogadores(collecaoJogadores, numerosSorteados){
+
+
     console.log(numerosSorteados);
     collecaoJogadores.forEach(
 		function(value){
@@ -79,7 +90,7 @@ function pontuarJogador(jogador, numerosSorteados){
 		}
 	);
 
-    if(jogador.pontos === 10){
+    if(jogador.pontos === 10 && jogador.isPago === true){
         Jogadores.update(
            { _id: jogador._id },
            { $set:
@@ -88,6 +99,8 @@ function pontuarJogador(jogador, numerosSorteados){
               }
            }
        );
+
+
     }
 
 }

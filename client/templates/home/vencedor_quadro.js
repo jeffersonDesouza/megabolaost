@@ -1,5 +1,5 @@
 function listarVencedoresPorPontos(pontos){
-    return Jogadores.find({pontos:{$eq:pontos}});
+    return Jogadores.find({pontos:{$eq:pontos}, isPago:'pago'});
 }
 
 

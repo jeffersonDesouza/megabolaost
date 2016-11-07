@@ -1,7 +1,18 @@
+import {verificaAdm} from '../verificaAdm.js';
+
+
+
 export function AddJogador(telefone, nome, isPago,jogoArray){
-    if(!this.userId){
-        throw new Meteor.Error(400, 'Usuário deve esar logado');
+
+
+    if(!verificaAdm(this.userId)){
+        throw new Meteor.Error(400, 'Usuário deve ser Administrador');
     }
+
+    if(Sorteios.findOne({"isVencedor":true})){
+        throw new Meteor.Error(500, 'Os sorteios começaram');
+    }
+
 
     let jogador = {
         'telefone': telefone,
@@ -16,7 +27,7 @@ export function AddJogador(telefone, nome, isPago,jogoArray){
         Jogadores.update(jogadorId, {$set: jogador});
         return;
     }
-    
+
     Jogadores.insert(jogador);
 }
 

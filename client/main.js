@@ -15,17 +15,20 @@ Accounts.ui.config({
 });
 
 
+/*
+
 if(!Meteor.users.findOne()){
 
-    var user = {
-        username: "988157090",
-        password: "ira123ieza",
-    };
+var user = {
+username: "988157090",
+password: "ira123ieza",
+};
 
-    Accounts.createUser(user);
+Accounts.createUser(user);
 }
 
-/*
+
+
 Session.set('bolas', function(){
 	bolas = [];
 

@@ -1,6 +1,19 @@
 Template.jogadores_lista.helpers({
     jogadores: function(){
-        return Jogadores.find({},{nome:1,jogoArray:1});
+
+        if(Session.get('searchFone')){
+
+            ///return Jogadores.find({telefone:Session.get('searchFone')});
+
+            const selector = {};
+            let searchFone = Session.get('searchFone');
+
+           selector.telefone = {$regex: `^${searchFone}`, $options: 'i'};
+
+           return Jogadores.find(selector);
+        }
+
+        return Jogadores.find({});
     },
     estaPago(isPago){
         if(isPago == "pago"){
@@ -13,6 +26,15 @@ Template.jogadores_lista.helpers({
             return "#e0f2f1"
         }
         return "#ff8a80 ";
+    },
+    isAdministrador(){
+        return Jogadores.findOne({_id:Meteor.userId()}).isAdm;
+    },
+    isLoggedIn(){
+        if(Meteor.userId()){
+          return true;
+        }
+        return false;
     }
 });
 

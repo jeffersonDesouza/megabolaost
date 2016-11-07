@@ -6,35 +6,12 @@ Template.numeros_sorteados.onRendered(()=>{
 
 Template.numeros_sorteados.helpers({
     todosNumerosSorteados(){
-        /*
-        Meteor.call("listarTodosNumerosSorteados", function(error, result){
-            if(error){
-                console.log("error", error);
-            }
-            if(result){
-                Session.set('todosNumerosSorteados', result.todosNumerosSorteados);
-            }
-        });
-
-        return Session.get('todosNumerosSorteados');
-        */
+        
         return NumerosSorteados.findOne({}, {todosNumerosSorteados:1});
     },
     sorteiosLista(){
 
-        Meteor.call("listarSorteios", function(error, result){
-            if(error){
-                console.log("error", error);
-            }
-            if(result){
-
-
-                Session.set('sorteios', result);
-
-            }
-        });
-
-        return Session.get('sorteios');
+        return Sorteios.find();
 
     }
 
