@@ -7,51 +7,31 @@
 		<div class="row card-panel" >
 
         	<div class="col s12 text-uppercase center">
-				<h5>vencedores</h5>
+				<h6>vencedores</h6>
 			</div>
 
-            {{#each vencedoresMAISpontos}}
-            <div class="col s6"  style="color:#fff">
-                <div class=" light-blue darken-2 center" style="padding: 5px">
-                    Mais pontos
+            <div class="row">
+
+                <div class="col s6">
+                    <div class="col s12">
+                        <label>Mais Pontos</label>
+                    </div>
+                    {{#each vencedoresMAISpontos}}
+                        {{> vencedor jogador=this cor="blue"}}
+                    {{/each}}
+
                 </div>
-                <div class=" light-blue darken-3" style="padding: 10px">
-                    {{#each jogoArray}}
-                        {{this}} 
+
+                <div class="col s6">
+                    <div class="col s12">
+                        <label>Menos Pontos</label>
+                    </div>
+                    {{#each vencedoresMENOSpontos}}
+                        {{> vencedor jogador=this cor="lime"}}
                     {{/each}}
                 </div>
 
-                <div class="light-blue darken-4" style="padding: 5px">
-                    Nome: {{nome}}
-                    <span class="right" style="font-size: 20px"><strong>Acertos:{{pontos}}</strong></span>
-                </div>
-
             </div>
-            {{/each}}
-
-
-
-
-			<div class="col s6"  style="color:#fff">
-                {{#each vencedoresMENOSpontos}}
-    				<div class="red darken-1 center" style="padding: 5px">
-    					MENOS PONTOS
-    				</div>
-
-    				<div class="red darken-2" style="padding: 10px">
-                        {{#each jogoArray}}
-                            {{this}}
-                        {{/each}}
-
-    				</div>
-
-                    <div class="light-blue darken-4" style="padding: 5px">
-                        Nome: {{nome}}
-                        <span class="right" style="font-size: 20px"><strong>Acertos:{{pontos}}</strong></span>
-                    </div>
-                {{/each}}
-
-			</div>
 
 		</div>
     {{/if}}
@@ -61,19 +41,19 @@
 
 <template name="vencedor">
 
-    <div class="col s6"  style="color:#fff">
-        <div class=" light-blue darken-2 center" style="padding: 5px">
-            {{tipo_ponto}}
-        </div>
-        <div class=" light-blue darken-3" style="padding: 10px">
-            {{#each jogoArray}}
+    <div class="section" >
+        <div class="col s12 {{cor}} lighten-3" style="padding: 10px">
+            {{#each jogador.jogoArray}}
                 {{this}}
             {{/each}}
         </div>
 
-        <div class="light-blue darken-4" style="padding: 5px">
-            Nome: {{nome}}
-            <span class="right" style="font-size: 20px"><strong>Acertos:{{pontos}}</strong></span>
+        <div class="col s12 m6 l6 {{cor}} lighten-4">
+            Nome: {{jogador.nome}}
+        </div>
+
+        <div class="col s12 m6 l6 {{cor}} lighten-4">
+            <strong>Acertos:{{jogador.pontos}}</strong>
         </div>
 
     </div>
