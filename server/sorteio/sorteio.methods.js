@@ -21,28 +21,42 @@ export function exluirSorteio(sorteioId){
     }
 
 
-    var sorteioDelete = Sorteios.findOne({_id:sorteioId});
-    var arrayNumeros = [];
+        var sorteioDelete = Sorteios.findOne({_id:sorteioId});
+        var arrayNumeros = [];
 
-    for(numero  of sorteioDelete.numerosSorteados) {
-        arrayNumeros.push(numero);
-    }
+        for(numero  of sorteioDelete.numerosSorteados) {
+            arrayNumeros.push(numero);
+        }
 
-    NumerosSorteados.update(
-        {},
-        { $pull: { todosNumerosSorteados: { $in: arrayNumeros} } },
-        { multi: true }
-    );
+        NumerosSorteados.update(
+            {},
+            { $pull: { todosNumerosSorteados: { $in: arrayNumeros} } },
+            { multi: true }
+        );
 
-    Sorteios.remove({_id:sorteioId});
+        Sorteios.remove({_id:sorteioId});
 
-    sorteiosArray = Sorteios.find().fetch();
+        sorteiosArray = Sorteios.find().fetch();
 
-    for(sorteio of sorteiosArray) {
-        adicionarTodosNumerosSorteado(sorteio);
+        if(!Sorteios.findOne()){
 
-    }
-    aferirPontuacaoJogadores(collectionJogadoresPago(), listarTodosNumerosSorteados().todosNumerosSorteados);
+            Jogadores.update(
+                {pontos:{$gt:-1}},
+                {
+                    $set:{pontos:0}
+                },
+                {multi:true}
+            );
+
+        }{
+            for(sorteio of sorteiosArray) {
+                adicionarTodosNumerosSorteado(sorteio);
+                aferirPontuacaoJogadores(collectionJogadoresPago(), listarTodosNumerosSorteados().todosNumerosSorteados);
+            }
+        }
+
+
+
 }
 
 export function listarSorteios(){
