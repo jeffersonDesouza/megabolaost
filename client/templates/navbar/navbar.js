@@ -49,17 +49,14 @@ Template.navbar.events({
 
         if(Meteor.userId()){
 
-            $('#js-modal-login').removeClass('invalid');
             $('#telephone_login').removeClass('invalid');
             $('#password').removeClass('invalid');
 
-            $('#js-modal-login').addClass('valid');
             $('#telephone_login').addClass('valid');
             $('#password').addClass('valid');
 
             $('#modal1').closeModal();
         }else{
-            $('#js-modal-login').addClass('invalid');
             $('#telephone_login').addClass('invalid');
             $('#password').addClass('invalid');
 

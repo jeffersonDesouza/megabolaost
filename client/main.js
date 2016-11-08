@@ -14,6 +14,14 @@ Accounts.ui.config({
 	passwordSignupFields: "USERNAME_AND_EMAIL"
 });
 
+Meteor.subscribe("jogadores");
+
+Meteor.subscribe("users");
+
+Meteor.subscribe("sorteios");
+
+Meteor.subscribe("numerosSorteados");
+
 
 /*
 

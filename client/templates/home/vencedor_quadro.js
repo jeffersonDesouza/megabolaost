@@ -10,16 +10,22 @@ Meteor.setInterval(function(){
     });
 }, 1000)
 */
+Meteor.subscribe("jogadores");
 
 
 Template.vencedores_quadro.helpers({
     temVencedor(){
-        let jogador = Jogadores.findOne({'isVencedor': true});
+
+        if(Jogadores.find({'isVencedor': true}).count()>0){
+            let jogador = Jogadores.findOne({'isVencedor': true});
+            Session.set('temVencedor', jogador.isVencedor);
+
+            return Session.get('temVencedor');
+        }
+
+        return false;
 
 
-        Session.set('temVencedor', jogador.isVencedor);
-
-        return Session.get('temVencedor');
     },
 
     vencedoresMAISpontos(){

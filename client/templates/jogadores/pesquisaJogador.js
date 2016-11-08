@@ -1,9 +1,9 @@
 
-Template.pesquisaJogador.helpers({
-    pesquisar(){
-
+Template.pesquisaJogador.onRendered(
+    ()=>{
+        Session.set("searchFone", "");
     }
-});
+);
 
 Template.pesquisaJogador.events({
     "keyup #search": function (e) {
@@ -12,9 +12,9 @@ Template.pesquisaJogador.events({
         let pesquisajogador = $("#searchValue").val();
 
         if(pesquisajogador){
-            Session.set("searchFone", pesquisajogador);            
+            Session.set("searchFone", pesquisajogador);
         }else{
-            Session.set("searchFone", undefined);
+            Session.set("searchFone", "");
         }
 
 

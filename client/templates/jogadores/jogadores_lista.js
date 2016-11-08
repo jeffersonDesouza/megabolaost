@@ -1,3 +1,5 @@
+
+
 Template.jogadores_lista.helpers({
     jogadores: function(){
 
@@ -9,6 +11,7 @@ Template.jogadores_lista.helpers({
             let searchFone = Session.get('searchFone');
 
            selector.telefone = {$regex: `^${searchFone}`, $options: 'i'};
+
 
            return Jogadores.find(selector);
         }
