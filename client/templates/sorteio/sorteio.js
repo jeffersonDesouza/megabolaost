@@ -26,10 +26,12 @@ Template.salvar_sorteio_template.helpers({
                 htmlNum:
                     `<div class="col s11 range-field">
 
-                        <label>${i+1}º Número</label>
+                        <label for="num_${i}">${i+1}º Número</label>
 
                         <div class="col s4">
                             <input  id="num_${i}" name="num_${i}" class="numero_escolhido2" type="number" min="1" max="60" value="${jogoArray[i]}"/>
+                            <label for="num_${i}" data-error="Este valor ja foi informado" data-success=""></label>
+
                         </div>
                     </div>
 
@@ -91,7 +93,27 @@ Template.salvar_sorteio_template.events({
 
 		let label_id = 'label_'+$(event.target).attr('id')
 		let valor = $(event.target).val();
-		$('#'+label_id).text(valor);
+
+        var countRepeat = 0;
+
+        $(".numero_escolhido2").each(function(index){
+
+            if($(this).val() && valor == $(this).val()){
+                countRepeat++;
+                if(countRepeat>1){
+                    $(this).addClass("invalid");
+                    $(this).val(0);
+
+                }
+            }
+                if($(this).val() != 0){
+                    $(this).removeClass("invalid");
+                    $(this).addClass("valid");
+                    $('#'+label_id).text(valor);
+                }
+
+
+        });
 
 	}
 });
