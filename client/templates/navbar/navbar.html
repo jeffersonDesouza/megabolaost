@@ -4,50 +4,47 @@
 
 		<div class="nav-wrapper teal lighten-2">
 
-			<a href="/" class="brand-logo" style="padding-left: 10px">Mega Bolão ST</a>
+            <div class="col s8">
+			    <a href="/" class="brand-logo" style="padding-left: 10px">Mega Bolão ST</a>
+            </div>
 
-            {{#if isLoggedIn}}
-			    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            {{/if}}
+            <div class="col s8">
+
+        		    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
 				<div class="right">
 
 			 		<!-- Modal Trigger -->
-                    {{#if isLoggedIn}}
-                        <ul id="nav-mobile" class="hide-on-med-and-down" style="display:inline;">
-                            {{> link_navbar}}
+                        <ul id="nav-mobile" class="hide-on-med-and-down right" style="display:inline;">
+                            {{#if isLoggedIn}}
+                                {{> link_navbar}}
+                                <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
+                            {{/if}}
+
+                            {{#if isNotLoggedIn}}
+                            <!-- {{> loginButtons align="right-->
+                                <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
+                            {{/if}}
                         </ul>
-                    {{/if}}
 
-
-                    <div class="right">
-                        {{#if isLoggedIn}}
-                        <ul>
-                            <li>{{getUsername}}</li>
-                            <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
-                        </ul>
-                        {{/if}}
-
-                        {{#if isNotLoggedIn}}
-                        <!--
-                            {{> loginButtons align="right"}}
-                        -->
-                        <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
-
-                        {{/if}}
-                    </div>
 				</div>
-
+            </div>
 
 		</div>
 
-        {{#if isLoggedIn}}
 			<!-- Side bar menu escondido-->
 			<ul class="side-nav teal lighten-2" id="mobile-demo">
+                {{#if isLoggedIn}}
                     	{{> link_navbar}}
-                    <li class="divider"></li>
-                    <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
+                            <li class="divider"></li>
+                        <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
+                {{/if}}
+
+                {{#if isNotLoggedIn}}
+                <!-- {{> loginButtons align="right-->
+                    <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
+                {{/if}}
 			</ul>
-        {{/if}}
 
 	</nav>
 
