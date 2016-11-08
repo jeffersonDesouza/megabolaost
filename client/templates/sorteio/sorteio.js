@@ -82,6 +82,8 @@ Template.salvar_sorteio_template.events({
                 numerosSorteados.push($(this).val(0));
         });
 
+        $('#modal_add_com_sucesso').openModal();
+
         return false;
     },
     "click #js-show-add-numeros2":function(){

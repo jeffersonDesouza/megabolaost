@@ -37,7 +37,6 @@ Template.navbar.events({
 	},
 
 	'click #modal-trigger': function(event){
-		console.log("modal");
 		$('#modal1').openModal();
 
 	},
@@ -49,7 +48,6 @@ Template.navbar.events({
         Meteor.loginWithPassword(username, password);
 
         if(Meteor.userId()){
-            $('#modal1').closeModal();
 
             $('#js-modal-login').removeClass('invalid');
             $('#telephone_login').removeClass('invalid');
@@ -58,6 +56,8 @@ Template.navbar.events({
             $('#js-modal-login').addClass('valid');
             $('#telephone_login').addClass('valid');
             $('#password').addClass('valid');
+
+            $('#modal1').closeModal();
         }else{
             $('#js-modal-login').addClass('invalid');
             $('#telephone_login').addClass('invalid');
