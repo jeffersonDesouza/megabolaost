@@ -4,7 +4,7 @@
 
 		<div class="nav-wrapper teal lighten-2">
 
-			<a href="/" class="brand-logo" style="padding-left: 15px">Mega Bolão ST</a>
+			<a href="/" class="brand-logo" style="padding-left: 10px">Mega Bolão ST</a>
 
             {{#if isLoggedIn}}
 			    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -28,8 +28,11 @@
                         {{/if}}
 
                         {{#if isNotLoggedIn}}
-                        <!--<button id="modal-trigger" data-target="modal1" class="btn">Login</button>-->
-                        {{> loginButtons align="right"}}
+                        <!--
+                            {{> loginButtons align="right"}}
+                        -->
+                        <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
+
                         {{/if}}
                     </div>
 				</div>
@@ -51,19 +54,19 @@
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
-		<form id="js-modal-login">
+		<form id="js-modal-login" class="validate">
 			<div class="modal-header center">
 				Login
 			</div>
 			<div class="modal-content">
 				<div class="input-field">
-					<input id="telephone_login" type="tel" name="telefone" class="validate">
+					<input id="telephone_login" type="tel" name="telefone" class="validate" required>
 					<label for="telephone_login">Telefone</label>
 				</div>
 
 				<div class="input-field">
-					<input id="password" type="password" class="validate">
-					<label for="password">Senha</label>
+					<input id="password" type="password" class="validate" required>
+					<label for="password" data-error="Usuário ou senha inválido" data-success="">Senha</label>
 				</div>
 			</div>
 

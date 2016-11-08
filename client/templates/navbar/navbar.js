@@ -50,7 +50,22 @@ Template.navbar.events({
 
         if(Meteor.userId()){
             $('#modal1').closeModal();
+
+            $('#js-modal-login').removeClass('invalid');
+            $('#telephone_login').removeClass('invalid');
+            $('#password').removeClass('invalid');
+
+            $('#js-modal-login').addClass('valid');
+            $('#telephone_login').addClass('valid');
+            $('#password').addClass('valid');
+        }else{
+            $('#js-modal-login').addClass('invalid');
+            $('#telephone_login').addClass('invalid');
+            $('#password').addClass('invalid');
+
         }
+
+
 
 		return false;
 	},
