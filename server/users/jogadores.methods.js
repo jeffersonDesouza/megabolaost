@@ -1,6 +1,13 @@
 import {verificaAdm} from '../verificaAdm.js';
 
+export function logar(){
 
+
+    if(!this.userId){
+        throw new Meteor.Error('Usuário nao encontrado');
+    }
+
+}
 
 export function AddJogador(telefone, nome, isPago,jogoArray){
 
@@ -72,6 +79,7 @@ Meteor.methods({
     deletarJogador,
     listarJogadores,
     listarVencedoresMaisPontos,
-    listarVencedoresMenosPontos
+    listarVencedoresMenosPontos,
+    logar
 
 });

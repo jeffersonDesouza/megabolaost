@@ -33,12 +33,16 @@
                 </thead>
                 <tbody>
                     {{#each sorteiosLista}}
-                        <tr>
+                        <tr id="{{_id}}">
                             <td>
                                 {{dataSorteio}}
+                                <div>
+                                    <a href="/" id="js-exluir-sorteio-button" class="btn flat">Excluir Sorteio</a>
+                                </div>
                             </td>
                             <td>
                                 {{numerosSorteados}}
+
                             </td>
                             <td>
                                 <a href="{{linkSorteio}}" class="a-sorteio" target="blank">Sorteio no Site da Mega</a>

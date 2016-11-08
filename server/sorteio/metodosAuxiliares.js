@@ -1,59 +1,3 @@
-export function AddSorteio(sorteio){
-
-    if(!this.userId || Jogadores.findOne({"isVencedor":true})){
-        throw new Meteor.Error(500, 'Já existe vencedor,. não pode adicionar sorteio');
-    }
-
-    Sorteios.insert(sorteio);
-
-
-    adicionarTodosNumerosSorteado(sorteio);
-
-
-    aferirPontuacaoJogadores(collectionJogadoresPago(), listarTodosNumerosSorteados().todosNumerosSorteados);
-}
-
-
-export function exluirSorteio(sorteioId){
-
-    if(!this.userId){
-        throw new Meteor.Error(400, 'Usuário deve esar logado');
-    }
-
-
-    var sorteioDelete = Sorteios.findOne({_id:sorteioId});
-    var arrayNumeros = [];
-
-    for(numero  of sorteioDelete.numerosSorteados) {
-        arrayNumeros.push(numero);
-    }
-
-    NumerosSorteados.update(
-        {},
-        { $pull: { todosNumerosSorteados: { $in: arrayNumeros} } },
-        { multi: true }
-    );
-
-    Sorteios.remove({_id:sorteioId});
-
-    sorteiosArray = Sorteios.find().fetch();
-
-    for(sorteio of sorteiosArray) {
-        adicionarTodosNumerosSorteado(sorteio);
-
-    }
-    aferirPontuacaoJogadores(collectionJogadoresPago(), listarTodosNumerosSorteados().todosNumerosSorteados);
-}
-
-export function listarSorteios(){
-    return Sorteios.find();
-}
-
-export function listarTodosNumerosSorteados(){
-
-    return NumerosSorteados.findOne({}, {todosNumerosSorteados:1});
-}
-
 
 function adicionarTodosNumerosSorteado(sorteio){
     if(Jogadores.findOne({"isVencedor":true})){
@@ -155,13 +99,3 @@ function isValorPresenteBuscaBinaria(valorBuscado, vetorValores) {
    }
    return false;
 }
-
-
-
-
-Meteor.methods({
-    AddSorteio,
-    exluirSorteio,
-    listarSorteios,
-    listarTodosNumerosSorteados
-});

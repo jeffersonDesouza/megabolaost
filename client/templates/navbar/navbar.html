@@ -18,7 +18,7 @@
                         <ul id="nav-mobile" class="hide-on-med-and-down right" style="display:inline;">
                             {{#if isLoggedIn}}
                                 {{> link_navbar}}
-                                <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
+                                <li><a href="/" class="btn waves-effect waves-light js-sair_button">Sair</a></li>
                             {{/if}}
 
                             {{#if isNotLoggedIn}}
@@ -37,7 +37,7 @@
                 {{#if isLoggedIn}}
                     	{{> link_navbar}}
                             <li class="divider"></li>
-                        <li><button class="btn waves-effect waves-light js-sair_button">Sair</button></li>
+                        <li><a href="/"  class="btn waves-effect waves-light js-sair_button">Sair</a></li>
                 {{/if}}
 
                 {{#if isNotLoggedIn}}

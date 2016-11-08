@@ -47,20 +47,16 @@ Template.navbar.events({
 
         Meteor.loginWithPassword(username, password);
 
-        if(Meteor.userId()){
-
-            $('#telephone_login').removeClass('invalid');
-            $('#password').removeClass('invalid');
-
-            $('#telephone_login').addClass('valid');
-            $('#password').addClass('valid');
-
-            $('#modal1').closeModal();
-        }else{
+        if(!Meteor.userId()){
             $('#telephone_login').addClass('invalid');
             $('#password').addClass('invalid');
-
+        }else{
+            $('#modal1').closeModal();
         }
+
+
+
+
 
 
 
