@@ -2,10 +2,11 @@ import {verificaAdm} from '../verificaAdm.js';
 
 export function logar(){
 
-
     if(!this.userId){
         throw new Meteor.Error('Usuário nao encontrado');
     }
+
+    return true;
 
 }
 

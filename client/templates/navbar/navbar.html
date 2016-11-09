@@ -1,8 +1,8 @@
 <template name="navbar">
 
-	<nav class="nav-extended">
+    <nav class="nav-extended">
 
-		<div class="nav-wrapper teal lighten-2">
+        <div class="nav-wrapper teal lighten-2">
 
             <div class="col s8">
                 <a href="/" class="brand-logo" style="padding-left: 10px">Mega Bolão ST
@@ -16,68 +16,77 @@
 
             <div class="col s3">
 
-        		    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
-				<div class="right">
+                <div class="right">
 
-			 		<!-- Modal Trigger -->
-                        <ul id="nav-mobile" class="hide-on-med-and-down right" style="display:inline;">
-                            {{#if isLoggedIn}}
-                                {{> link_navbar}}
-                                <li><a href="/" class="btn waves-effect waves-light js-sair_button">Sair</a></li>
-                            {{/if}}
+                    <!-- Modal Trigger -->
+                    <ul id="nav-mobile" class="hide-on-med-and-down right" style="display:inline;">
+                        {{#if isLoggedIn}}
+                        {{> link_navbar}}
+                        <li><a href="/" class="btn waves-effect waves-light js-sair_button">Sair</a></li>
+                        {{/if}}
 
-                            {{#if isNotLoggedIn}}
-                            <!-- {{> loginButtons align="right-->
-                                <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
-                            {{/if}}
-                        </ul>
+                        {{#if isNotLoggedIn}}
+                        <!-- {{> loginButtons align="right-->
+                        <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
+                        {{/if}}
+                    </ul>
 
-				</div>
+                </div>
             </div>
 
-		</div>
+        </div>
 
-			<!-- Side bar menu escondido-->
-			<ul class="side-nav teal lighten-2" id="mobile-demo">
-                {{#if isLoggedIn}}
-                    	{{> link_navbar}}
-                            <li class="divider"></li>
-                        <li><a href="/"  class="btn waves-effect waves-light js-sair_button">Sair</a></li>
-                {{/if}}
+        <!-- Side bar menu escondido-->
+        <ul class="side-nav teal lighten-2" id="mobile-demo">
+            {{#if isLoggedIn}}
+            {{> link_navbar}}
+            <li class="divider"></li>
+            <li><a href="/"  class="btn waves-effect waves-light js-sair_button">Sair</a></li>
+            {{/if}}
 
-                {{#if isNotLoggedIn}}
-                <!-- {{> loginButtons align="right-->
-                    <button id="modal-trigger" data-target="modal1" class="btn js-fechar-navbar">Login</button>
-                {{/if}}
-			</ul>
+            {{#if isNotLoggedIn}}
+            <!-- {{> loginButtons align="right-->
+            <button id="modal-trigger" data-target="modal1" class="btn js-fechar-navbar">Login</button>
+            {{/if}}
+        </ul>
 
-	</nav>
+    </nav>
 
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-		<form id="js-modal-login" class="validate">
-			<div class="modal-header center">
-				Login
-			</div>
-			<div class="modal-content">
-				<div class="input-field">
-					<input id="telephone_login" type="tel" name="telefone" class="validate" required>
-					<label for="telephone_login">Telefone</label>
-				</div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
 
-				<div class="input-field">
-					<input id="password" type="password" class="validate" required>
-					<label for="password" data-error="Usuário ou senha inválido" data-success="">Senha</label>
-				</div>
-			</div>
+        {{modalLogin}}
 
-			<div class="modal-footer">
-				<button type="submit" class="btn waves-effect waves-light" name="logar">Entrar</button>
-			</div>
-		</form>
-  </div>
+        <form id="js-modal-login" class="validate">
+            <div class="modal-header center">
+                Login
+            </div>
+            <div class="modal-content">
+                <div class="input-field">
+                    <input id="telephone_login" type="tel" name="telefone" class="validate" required>
+                    <label for="telephone_login">Telefone</label>
+                </div>
+
+                <div class="input-field">
+                    <input id="password" type="password" class="validate" required>
+                    <label for="password" data-error="Usuário ou senha inválido" data-success="">Senha</label>
+                </div>
+            </div>
+
+            {{#if fazendoLogin}}
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+            {{/if}}
+
+            <div class="modal-footer">
+                <button type="submit" class="btn waves-effect waves-light" name="logar">Entrar</button>
+            </div>
+        </form>
+    </div>
 
 
 </template>
@@ -86,8 +95,8 @@
 
 <template name="link_navbar">
 
-        <li><a href="/adicionar-jogador" class="waves-effect waves-light js-fechar-navbar">Adicionar Jogador</a></li>
-        <li><a href="/salvar-sorteio" class="waves-effect waves-light js-fechar-navbar">Salvar Sorteio</a></li>
-        <li><a href="/lista-jogadores" class="waves-effect waves-light js-fechar-navbar">Lista de Jogadores</a></li>
+    <li><a href="/adicionar-jogador" class="waves-effect waves-light js-fechar-navbar">Adicionar Jogador</a></li>
+    <li><a href="/salvar-sorteio" class="waves-effect waves-light js-fechar-navbar">Salvar Sorteio</a></li>
+    <li><a href="/lista-jogadores" class="waves-effect waves-light js-fechar-navbar">Lista de Jogadores</a></li>
 
 </template>

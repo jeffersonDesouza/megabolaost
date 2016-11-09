@@ -1,8 +1,8 @@
-function fecharNavBAr(){
-}
+
 
 Template.navbar.onRendered(()=>{
     $('.button-collapse').sideNav();
+    Session.set('fazendoLogin', false);
 });
 
 
@@ -24,10 +24,10 @@ Template.navbar.helpers({
 
         return true;
     },
-    getUsername:function(){
+    fazendoLogin(){
 
+        return Session.get('fazendoLogin');
 
-        return "";
     }
 });
 
@@ -49,14 +49,32 @@ Template.navbar.events({
 		let username = event.target.telefone.value;
 		let password = event.target.password.value;
 
-        Meteor.loginWithPassword(username, password);
+        Meteor.loginWithPassword(username, password,
+            ()=>{
 
-        if(!Meteor.userId()){
-            $('#telephone_login').addClass('invalid');
-            $('#password').addClass('invalid');
-        }
+                if(Meteor.userId()){
 
-        $('#modal1').closeModal();
+                    $('#telephone_login').removeClass('invalid');
+                    $('#password').removeClass('invalid');
+
+
+                    $('#telephone_login').addClass('valid');
+                    $('#password').addClass('valid');
+                    Session.set('fazendoLogin', false);
+
+                    $('#modal1').closeModal();
+                }else{
+                    Session.set('fazendoLogin', false);
+
+                    $('#telephone_login').addClass('invalid');
+                    $('#password').addClass('invalid');
+                }
+
+
+        });
+        Session.set('fazendoLogin', true);
+
+
 
 
 
