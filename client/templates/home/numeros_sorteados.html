@@ -37,7 +37,9 @@
                             <td>
                                 {{dataSorteio}}
                                 <div>
-                                    <a href="/" id="js-exluir-sorteio-button" class="btn flat">Excluir Sorteio</a>
+                                    {{#if isLoggedIn}}
+                                    <a href="/" id="js-exluir-sorteio-button" class="btn flat">Excluir</a>
+                                    {{/if}}
                                 </div>
                             </td>
                             <td>

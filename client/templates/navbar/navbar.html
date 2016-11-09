@@ -5,10 +5,16 @@
 		<div class="nav-wrapper teal lighten-2">
 
             <div class="col s8">
-			    <a href="/" class="brand-logo" style="padding-left: 10px">Mega Bolão ST</a>
+                <a href="/" class="brand-logo" style="padding-left: 10px">Mega Bolão ST
+
+                    {{#if isLoggedIn}}
+                    <small style="padding-right:10px"> - Neto</small>
+                    {{/if}}
+                </a>
             </div>
 
-            <div class="col s8">
+
+            <div class="col s3">
 
         		    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
@@ -42,7 +48,7 @@
 
                 {{#if isNotLoggedIn}}
                 <!-- {{> loginButtons align="right-->
-                    <button id="modal-trigger" data-target="modal1" class="btn">Login</button>
+                    <button id="modal-trigger" data-target="modal1" class="btn js-fechar-navbar">Login</button>
                 {{/if}}
 			</ul>
 
@@ -80,8 +86,8 @@
 
 <template name="link_navbar">
 
-        <li><a href="/adicionar-jogador" class="waves-effect waves-light">Adicionar Jogador</a></li>
-        <li><a href="/salvar-sorteio" clas="waves-effect waves-light">Salvar Sorteio</a></li>
-        <li><a href="/lista-jogadores" class="waves-effect waves-light">Lista de Jogadores</a></li>
+        <li><a href="/adicionar-jogador" class="waves-effect waves-light js-fechar-navbar">Adicionar Jogador</a></li>
+        <li><a href="/salvar-sorteio" class="waves-effect waves-light js-fechar-navbar">Salvar Sorteio</a></li>
+        <li><a href="/lista-jogadores" class="waves-effect waves-light js-fechar-navbar">Lista de Jogadores</a></li>
 
 </template>

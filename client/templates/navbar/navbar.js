@@ -1,8 +1,9 @@
-Template.navbar.onRendered(
-    function(){
-        $('.button-collapse').sideNav();
-    }
-);
+function fecharNavBAr(){
+}
+
+Template.navbar.onRendered(()=>{
+    $('.button-collapse').sideNav();
+});
 
 
 
@@ -32,8 +33,11 @@ Template.navbar.helpers({
 
 
 Template.navbar.events({
+    "click .js-fechar-navbar":function(){
+        $(this).sideNav('hide');
+    },
 	'click .button-collapse': function(event){
-		$('.button-collapse').sideNav();
+		$(this).sideNav();
 	},
 
 	'click #modal-trigger': function(event){
@@ -50,10 +54,9 @@ Template.navbar.events({
         if(!Meteor.userId()){
             $('#telephone_login').addClass('invalid');
             $('#password').addClass('invalid');
-        }else{
-            $('#modal1').closeModal();
         }
 
+        $('#modal1').closeModal();
 
 
 
@@ -65,6 +68,7 @@ Template.navbar.events({
     'click .js-sair_button':function(){
         if(Meteor.userId()){
             Meteor.logout();
+            $(this).sideNav('hide');
         }
     }
 });

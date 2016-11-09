@@ -43,7 +43,7 @@ export function exluirSorteio(sorteioId){
             Jogadores.update(
                 {pontos:{$gt:-1}},
                 {
-                    $set:{pontos:0}
+                    $set:{pontos:0, isVencedor:false}
                 },
                 {multi:true}
             );

@@ -10,9 +10,14 @@ Template.numeros_sorteados.helpers({
         return NumerosSorteados.findOne({}, {todosNumerosSorteados:1});
     },
     sorteiosLista(){
-
         return Sorteios.find();
+    },
+    isLoggedIn(){
+        if(Meteor.userId()){
+            return true;
+        }
 
+        return false;
     }
 
 });

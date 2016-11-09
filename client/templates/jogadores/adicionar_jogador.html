@@ -46,7 +46,7 @@
 
 		<div class="row">
 			<div class="col s12 center">
-				<a id="js-show-add-numeros" class="btn blue"> Adicionar Números do Jogador </a>
+				<Label> Informe os  Números do Jogador </label>
 			</div>
 
             <div id="div-escolher-numeros">
@@ -71,13 +71,16 @@
 <template name="modal_adicionado_com_sucesso">
     <div id="modal_add_com_sucesso" class="modal">
         <div class="modal-content">
+
             <p>{{componente}} adicionado com sucesso</p>
 
         </div>
         <div class="modal-footer">
+
             <p>Deseja adicionar uma novo {{componente}}?</p>
 
-            <a href="/{{link}}" class=" modal-action modal-close blue waves-effect waves-green btn-flat">Sim</a>
+            <a href="/{{link}}" class=" modal-action modal-close blue waves-effect waves-green btn-flat"
+                        style="margin-left:10px">Sim</a>
             <a href="/" class=" modal-action modal-close blue waves-effect waves-green btn-flat">Não</a>
 
         </div>

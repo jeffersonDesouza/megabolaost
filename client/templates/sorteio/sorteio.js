@@ -5,8 +5,6 @@ Template.salvar_sorteio_template.onRendered(()=>{
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
-    $('#div-escolher-numeros2').slideToggle('slow');
-
 });
 
 

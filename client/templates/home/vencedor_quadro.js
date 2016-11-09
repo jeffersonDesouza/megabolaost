@@ -10,7 +10,6 @@ Meteor.setInterval(function(){
     });
 }, 1000)
 */
-Meteor.subscribe("jogadores");
 
 
 Template.vencedores_quadro.helpers({

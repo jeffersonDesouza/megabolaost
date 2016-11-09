@@ -1,6 +1,5 @@
 Template.adicionar_jogador.onRendered(
     function(){
-        $('#div-escolher-numeros').slideToggle('slow');
     }
 );
 
