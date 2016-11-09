@@ -67,12 +67,7 @@ Template.adicionar_jogador.helpers({
 });
 
 Template.adicionar_jogador.events({
-    "click #statuPagamento": function(e){
-
-
-        console.log($("#statuPagamento:checked").val())
-    },
-
+    
     "click #js-show-add-numeros":function(){
 
         $('.numero_escolhido').each((index)=>{

@@ -1,4 +1,5 @@
 import {verificaAdm} from '../verificaAdm.js';
+import {sortArray} from '../metodosAuxiliares.js';
 
 export function logar(){
 
@@ -25,13 +26,13 @@ export function AddJogador(telefone, nome, isPago,jogoArray){
         throw new Meteor.Error(500, 'Já existem vencedores');
     }
 
-
+    sortArray(jogoArray);
 
     let jogador = {
         'telefone': telefone,
         'nome': nome,
         'isPago': isPago,
-        'jogoArray': jogoArray.sort(),
+        'jogoArray': jogoArray,
         'pontos': 0,
         'isVencedor': false,
     }
@@ -56,6 +57,11 @@ export function deletarJogador(jogadorId){
 }
 
 export function listarJogadores(jogadorId){
+
+    Jogadores.update(
+       {},
+       { $push: {jogoArray: {$each: [], $sort:1} } }
+    );
 
     Jogadores.find();
 }

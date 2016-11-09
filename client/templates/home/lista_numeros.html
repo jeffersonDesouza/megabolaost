@@ -1,0 +1,6 @@
+<template name="lista_numeros">
+    <!-- {{todosNumerosSorteados}} -->
+    {{#each ordenar arrayNumeros}}
+        <span class="bola" style="font-size:{{size}}px">{{converterNumero this}}</span>
+    {{/each}}
+</template>

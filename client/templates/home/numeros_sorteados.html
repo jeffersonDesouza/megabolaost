@@ -6,15 +6,9 @@
         <h5>NÚMEROS SORTEADOS</h5>
       </div>
 
-      <div class="grey lighten-5" style="padding: 10px">
-        <span style="font-size:20px">
-
-            <!-- {{todosNumerosSorteados}} -->
-            {{#each todosNumerosSorteados.todosNumerosSorteados}}
-                    <label class="bola">{{this}}</label>
-            {{/each}}
-        </span>
-
+      <!-- {{todosNumerosSorteados}} -->
+      <div>
+                {{> lista_numeros arrayNumeros=todosNumerosSorteados.todosNumerosSorteados size="20"}}
       </div>
     </div>
 

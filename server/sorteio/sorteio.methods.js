@@ -1,7 +1,18 @@
-export function AddSorteio(sorteio){
+import {sortArray} from '../metodosAuxiliares.js';
+
+
+export function AddSorteio( dataSorteio,linkSorteio, numerosSorteados){
 
     if(!this.userId || Jogadores.findOne({"isVencedor":true})){
         throw new Meteor.Error(500, 'Já existe vencedor,. não pode adicionar sorteio');
+    }
+
+    sortArray(numerosSorteados);
+
+    sorteio = {
+        'dataSorteio':dataSorteio ,
+        'linkSorteio':linkSorteio,
+        'numerosSorteados':numerosSorteados
     }
 
     Sorteios.insert(sorteio);
@@ -60,6 +71,9 @@ export function exluirSorteio(sorteioId){
 }
 
 export function listarSorteios(){
+
+
+
     return Sorteios.find();
 }
 

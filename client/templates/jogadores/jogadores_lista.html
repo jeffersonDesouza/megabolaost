@@ -23,9 +23,7 @@
                     {{/if}}
                     <br>
                     Numeros:
-                        {{#each jogoArray}}
-                            {{this}}
-                        {{/each}}
+                        {{> lista_numeros arrayNumeros=jogoArray size="10"}}                        
                     <br>
                     Número de acertos: {{pontos}}
                     <br>
